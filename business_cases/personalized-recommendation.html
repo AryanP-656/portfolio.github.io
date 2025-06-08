@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personalized Recommendation System</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body>
+  <nav class="navigation">
+    <div class="nav-links">
+      <a href="../domain.html">Back to Domain</a>
+      <a href="cdn-resource-management.html">Previous: CDN Resource Management</a>
+      <a href="search-query-completion.html">Next: Search Query Completion</a>
+    </div>
+  </nav>
+  <main class="section-container" style="margin-top: 5.5rem">
+    <section class="case-card" style="max-width:1200px;margin:2.5em auto;background:var(--card-background);border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.13);padding:2.2em 2em 2.5em 2em;">
+      <h2><i class="fas fa-user-friends"></i> Personalized Recommendation System</h2>
+      <p>
+        <span style="font-size: 1.08em; color: var(--text-color);">
+          Once you have logged in to your user profile, you'll see the home page. Here you'll see various movies and shows which all seem appealing to you. This doesn't just happen to be that way but rather it's due to Netflix's personalised recommendation system. Several algorithms can be used together to simulate this personalisation workflow.
+        </span>
+        <br><br>
+        <strong style="color: var(--primary-color);">1. Longest Common Subsequence (LCS)</strong><br>
+        <span style="color: var(--text-color);">
+          While it may not be used directly in the industries, it can be used for clustering logic that is applied in these systems to group users together based on their watch patterns.<br>
+          For example, we can compare users and identify the longest shared patterns like <b>Thriller → Crime → Sci-Fi</b> and group them into clusters which could form the basis for sections like "Users like you watched..." recommendation section.
+        </span>
+        <img src="../lcs.gif" alt="Longest Common Subsequence GIF" style="width: 600px; max-width: 100%; display: block; margin: 1rem auto 0.5rem auto; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.12);" />
+        <div style="font-size:0.98em;color:#aaa;margin:0.5em 0 1.5em 0;text-align:right;">
+          <b>GIF Source:</b> <a href="https://astikanand.github.io/techblogs/dynamic-programming-patterns/longest-common-subsequence-pattern" target="_blank">astikanand.github.io</a>
+        </div>
+        <div style="background: var(--card-background); border-left: 4px solid var(--primary-color); padding: 0.7em 1em; margin: 1em 0; font-size: 1.05em; box-shadow: 2px 2px 8px var(--neomorphic-dark);">
+          <strong style="color: var(--primary-color);">Time Complexity:</strong> O(U × L²), where U = number of users, L = average watch-sequence length (dynamic programming).
+        </div>
+        <details style="background-color: #1e1e1e; border-left: 4px solid #e50914; border-radius: 6px; padding: 1rem; margin-top: 1rem; color: #f1f1f1; font-family: 'Courier New', monospace; box-shadow: 0 2px 6px rgba(0,0,0,0.5);">
+          <summary style="font-weight: bold; font-size: 1.1rem; cursor: pointer; color: #e50914;">Show LCS Python Code</summary>
+          <pre><code># Longest Common Subsequence (LCS) for watchlist similarity
+# sequences: list of genre lists per user
+from functools import lru_cache
+
+def lcs(a, b):
+    n, m = len(a), len(b)
+    # DP table
+    dp = [[0]*(m+1) for _ in range(n+1)]
+    for i in range(n-1, -1, -1):
+        for j in range(m-1, -1, -1):
+            if a[i] == b[j]: dp[i][j] = 1 + dp[i+1][j+1]
+            else: dp[i][j] = max(dp[i+1][j], dp[i][j+1])
+    return dp[0][0]
+
+# Example usage:
+user_a = ['Action','Sci-Fi','Thriller']
+user_b = ['Sci-Fi','Drama','Thriller']
+print('LCS length:', lcs(user_a, user_b))
+          </code></pre>
+        </details>
+        <br>
+        <strong style="color: var(--primary-color);">2. A* Search</strong><br>
+        <span style="color: var(--text-color);">
+          The vast content across Netflix can be visualised as a graph of different genres and sub-genres as nodes. Here the edges will be the probability that a user transitions to a different genre which can be derived from historical user data. The heuristics for the A* search can be considered as the average ratings of the different genres meaning the higher rated ones would have a lower heuristics cost pulling the path towards them.<br>
+          The goal here would be to help the user explore new genres outside their comfort zone by finding the smoothest path from their current tastes to new popular content that the user is likely to enjoy without the risk of boring them with something that is too unfamiliar.
+        </span>
+        <img src="../Astar.gif" alt="A* Search GIF" style="width: 420px; max-width: 100%; display: block; margin: 1rem auto 0.5rem auto; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.12);" />
+        <div style="font-size:0.98em;color:#aaa;margin:0.5em 0 1.5em 0;text-align:right;">
+          <b>GIF Source:</b> <a href="https://en.wikipedia.org/wiki/A*_search_algorithm" target="_blank">wikipedia.org</a>
+        </div>
+        <div style="background: var(--card-background); border-left: 4px solid var(--primary-color); padding: 0.7em 1em; margin: 1em 0; font-size: 1.05em; box-shadow: 2px 2px 8px var(--neomorphic-dark);">
+          <strong style="color: var(--primary-color);">Time Complexity:</strong> O(E + V log V), where V = genres, E = transitions (with an admissible heuristic for pruning).<br>
+          <span style="font-size: 0.98em; color: var(--text-secondary);">You'll potentially examine each edge once (that's the "E" term). Each time you push or pop from the priority queue (up to V times), that costs O(log V).</span>
+        </div>
+        <details style="background-color: #1e1e1e; border-left: 4px solid #e50914; border-radius: 6px; padding: 1rem; margin-top: 1rem; color: #f1f1f1; font-family: 'Courier New', monospace; box-shadow: 0 2px 6px rgba(0,0,0,0.5);">
+          <summary style="font-weight: bold; font-size: 1.1rem; cursor: pointer; color: #e50914;">Show A* Search Python Code</summary>
+          <pre><code>import heapq
+
+def a_star(start, goal, graph, heuristic):
+    open_set = [(heuristic(start), 0, start)]
+    costs = {start: 0}
+    while open_set:
+        f, g, node = heapq.heappop(open_set)
+        if node == goal:
+            return g
+        for neighbor, weight in graph[node].items():
+            g2 = g + weight
+            if g2 < costs.get(neighbor, float('inf')):
+                costs[neighbor] = g2
+                f2 = g2 + heuristic(neighbor)
+                heapq.heappush(open_set, (f2, g2, neighbor))
+    return float('inf')
+
+# Example graph: transition costs
+graph = {
+  'Comedy': {'Dramedy': 0.3, 'Action': 0.7},
+  'Dramedy': {'Drama': 0.2},
+  'Drama': {'Thriller': 0.5},
+  'Action': {'Thriller': 0.4}
+}
+# Simple heuristic: zero (Dijkstra)
+h = lambda x: 0
+print('Path cost:', a_star('Comedy','Thriller',graph,h))
+          </code></pre>
+        </details>
+        <br>
+        <strong style="color: var(--primary-color);">3. PageRank</strong><br>
+        <span style="color: var(--text-color);">
+          Although LCS and A* Search may not be directly applicable, PageRank is prominently used in recommendation systems.<br>
+          In this case, we can model users and shows as a bipartite graph, followed by applying the PageRank algorithm to score content popularity and relevance. Here, titles with better user interaction (rewatches, likes, completion) gain higher ranks, thus boosting their probabilities to appear in the recommendations.
+        </span>
+        <img src="../Pagerank.gif" alt="PageRank GIF" style="width: 420px; max-width: 100%; display: block; margin: 1rem auto 0.5rem auto; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.12);" />
+        <div style="font-size:0.98em;color:#aaa;margin:0.5em 0 1.5em 0;text-align:right;">
+          <b>GIF Source:</b> <a href="https://memgraph.com/blog/pagerank-algorithm-for-graph-databases" target="_blank">memgraph.com</a>
+        </div>
+        <div style="background: var(--card-background); border-left: 4px solid var(--primary-color); padding: 0.7em 1em; margin: 1em 0; font-size: 1.05em; box-shadow: 2px 2px 8px var(--neomorphic-dark);">
+          <strong style="color: var(--primary-color);">Time Complexity:</strong> O(K × (V + E)), K = number of iterations, V = nodes (titles+users), E = edges (interactions).
+        </div>
+        <details style="background-color: #1e1e1e; border-left: 4px solid #e50914; border-radius: 6px; padding: 1rem; margin-top: 1rem; color: #f1f1f1; font-family: 'Courier New', monospace; box-shadow: 0 2px 6px rgba(0,0,0,0.5);">
+          <summary style="font-weight: bold; font-size: 1.1rem; cursor: pointer; color: #e50914;">Show PageRank Python Code</summary>
+          <pre><code># PageRank on a user–title bipartite graph
+def bipartite_pagerank(titles, users, damping=0.85, max_iter=100, tol=1e-6):
+    # Initialize scores uniformly
+    N = len(titles)
+    rank = {t: 1.0 / N for t in titles}
+
+    for _ in range(max_iter):
+        new_rank = {}
+        # Distribute rank from each title to its users, then back to titles
+        for t in titles:
+            # Base teleportation
+            new_rank[t] = (1 - damping) / N
+
+        # Contribution from linked users
+        for t in titles:
+            share = rank[t] / len(titles[t])
+            for u in titles[t]:
+                for t2 in users[u]:
+                    new_rank[t2] += damping * share / len(users[u])
+
+        # Check convergence
+        delta = sum(abs(new_rank[t] - rank[t]) for t in titles)
+        rank = new_rank
+        if delta < tol:
+            break
+
+    return rank
+
+# Example usage:
+titles = {
+    'T1': ['U1', 'U2'],
+    'T2': ['U2', 'U3'],
+    'T3': ['U3']
+}
+users = {
+    'U1': ['T1'],
+    'U2': ['T1', 'T2'],
+    'U3': ['T2', 'T3']
+}
+
+scores = bipartite_pagerank(titles, users)
+print("Title scores:", scores)
+          </code></pre>
+        </details>
+        <span style="display: block; margin-top: 1em; font-size: 1.13em; color: var(--primary-light); font-weight: 600;">
+          Since every title on the home page is hand-picked for you, Netflix can keep you glued to the screen well into the night by grouping you with users who share your viewing patterns (via an LCS-based clustering), guiding you across different genres without any dead ends (using our A* traversal), and surfacing the highest-engagement titles first (through PageRank-inspired scoring).
+        </span>
+      </p>
+      <div style="background:#18191a;border-radius:14px;padding:1.2em 1.5em;margin-top:2.5em;box-shadow:0 2px 12px rgba(229,9,20,0.10);color:#e0e0e0;">
+        <b style="font-size:1.08em;">References:</b>
+        <ul style="font-size:1em;color:#aaa;margin-top:0.7em;list-style-type:disc;padding-left:1.5em;">
+          <li><a href="https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39" target="_blank">Netflix Tech Blog: Foundation Model for Personalized Recommendation</a></li>
+          <li><a href="https://medium.com/@zhonghong9998/personalized-recommendations-how-netflix-and-amazon-use-deep-learning-to-enhance-user-experience-e7bd6fcd18ff" target="_blank">Medium: Personalized Recommendations (Netflix & Amazon)</a></li>
+          <li><a href="https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/" target="_blank">GeeksforGeeks: Longest Common Subsequence</a></li>
+          <li><a href="https://www.geeksforgeeks.org/a-search-algorithm/" target="_blank">GeeksforGeeks: A* Search Algorithm</a></li>
+          <li><a href="https://medium.com/@TadashiHomer/understanding-and-implementing-the-pagerank-algorithm-in-python-2ce8683f17a3" target="_blank">Medium: Understanding and Implementing the PageRank Algorithm</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

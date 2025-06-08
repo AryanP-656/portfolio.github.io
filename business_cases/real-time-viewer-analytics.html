@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Viewer Analytics</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navigation">
+      <div class="nav-links">
+        <a href="../domain.html">Back to Domain</a>
+        <a href="playback-buffer-optimization.html"
+          >Previous: Playback Buffer Optimization</a
+        >
+      </div>
+    </nav>
+    <main class="section-container" style="margin-top: 5.5rem">
+      <section class="case-card" style="max-width:1200px;margin:2.5em auto;background:var(--card-background);border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.13);padding:2.2em 2em 2.5em 2em;">
+        <h2><i class="fas fa-chart-line"></i> Real-Time Viewer Analytics</h2>
+        <p
+          style="
+            font-size: 1.08em;
+            color: var(--text-color);
+            font-style: italic;
+          "
+        >
+          Now that you've settled into your movie or show, over the course of
+          time you might find yourself skipping intros, pausing, and rewinding.
+          Netflix needs to capture all these interactions instantly, so that
+          they can power live dashboards and rapid A/B tests without lag.
+        </p>
+        <br />
+        <br />
+        <h3
+          style="
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 0.7em;
+          "
+        >
+          Fenwick Tree (Binary Indexed Tree) for Instant Aggregates
+        </h3>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+            margin: 2em 0 1em 0;
+          "
+        >
+          <figure style="margin: 0; text-align: center">
+            <img
+              src="../Fenwick_tree_construction.gif"
+              alt="Fenwick Tree Construction"
+              style="
+                width: 1200px;
+                max-width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+                background: #e9e9e9;
+              "
+            />
+            <figcaption
+              style="
+                margin-top: 0.5em;
+                font-size: 1.05em;
+                color: #aaa;
+                font-weight: 600;
+                text-align: right;
+              "
+            >
+              Fenwick Tree Construction — GIF Source: <a href="https://visualgo.net/en/fenwicktree" target="_blank">visualgo.net</a>
+            </figcaption>
+          </figure>
+          <figure style="margin: 0; text-align: center">
+            <img
+              src="../Fenwick-tree-query.gif"
+              alt="Fenwick Tree Query"
+              style="
+                width: 1200px;
+                max-width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+                background: #e9e9e9;
+              "
+            />
+            <figcaption
+              style="
+                margin-top: 0.5em;
+                font-size: 1.05em;
+                color: #aaa;
+                font-weight: 600;
+                text-align: right;
+              "
+            >
+              Fenwick Tree Query — GIF Source: <a href="https://visualgo.net/en/fenwicktree" target="_blank">visualgo.net</a>
+            </figcaption>
+          </figure>
+        </div>
+
+        
+        <b>Use-Case:</b> Maintain counts of events (pauses, rewinds, skips) over time windows or per-episode segments, with O(log N) updates and prefix-sum queries.
+        <br><br>
+        <b>Working:</b>
+        <ul style="margin-left: 1.5em; list-style-type: disc">
+          <li>Index each video segment (or minute mark) from 1…N.</li>
+          <li>
+                Whenever a user pauses at time index i, do a point-update in the
+                Fenwick Tree.
+              </li>
+              <li>
+                To get total pauses in the first k segments, do a prefix-sum
+                query.
+              </li>
+              <li>
+                To get in an arbitrary window [l…r], compute sum(r) – sum(l−1).
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <details
+          style="
+            background-color: #1e1e1e;
+            border-left: 4px solid #e50914;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #f1f1f1;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+          "
+        >
+          <summary
+            style="
+              font-weight: bold;
+              font-size: 1.1rem;
+              cursor: pointer;
+              color: #e50914;
+            "
+          >
+            Show Fenwick Tree Python Code
+          </summary>
+          <pre><code>class FenwickTree:
+    def __init__(self, n):
+        self.n = n
+        self.fw = [0]*(n+1)
+
+    def update(self, i, delta):
+        # Add delta at index i
+        while i <= self.n:
+            self.fw[i] += delta
+            i += i & -i
+
+    def query(self, i):
+        # Sum of [1..i]
+        s = 0
+        while i > 0:
+            s += self.fw[i]
+            i -= i & -i
+        return s
+
+    def range_query(self, l, r):
+        return self.query(r) - self.query(l-1)
+
+# Example: track pauses over a 10-minute window
+ft = FenwickTree(10)
+pauses = [ (2,1), (5,1), (5,1), (9,1) ]  # (minute_index, count)
+for idx, cnt in pauses:
+    ft.update(idx, cnt)
+
+print("Pauses in minutes 1–5:", ft.range_query(1,5))  # → 3
+print("Pauses in minutes 6–10:", ft.range_query(6,10)) # → 1
+        </code></pre>
+        </details>
+        <div
+          style="
+            background: var(--card-background);
+            border-left: 4px solid var(--primary-color);
+            padding: 0.7em 1em;
+            margin: 2em 0 1em 0;
+            font-size: 1.05em;
+            box-shadow: 2px 2px 8px var(--neomorphic-dark);
+          "
+        >
+          <strong style="color: var(--primary-color)">Efficiency:</strong><br />
+          <b>Update:</b> O(log N) per interaction<br />
+          <b>Query:</b> O(log N) for any prefix or window
+        </div>
+        <span
+          style="
+            display: block;
+            margin-top: 1em;
+            font-size: 1.13em;
+            color: var(--primary-light);
+            font-weight: 600;
+          "
+        >
+          With a Fenwick Tree, Netflix can keep real-time metrics on viewer
+          behaviour and feed live dashboards, trigger instant anomaly alerts
+          (e.g., sudden surge in rewinds at a specific timestamp), and implement
+          dynamic A/B testing of features like "Skip Intro" placement. The
+          interactions can be two types of signals as follows which Netflix
+          wouldn't want to ignore.
+        </span>
+        <div style="margin-top: 2em">
+          <div
+            style="
+              background: #1e7e34;
+              border-left: 5px solid #28a745;
+              color: #fff;
+              padding: 0.9em 1.2em;
+              margin-bottom: 1.2em;
+              font-size: 1.08em;
+              font-weight: 600;
+              box-shadow: 2px 2px 8px #b2f2b2;
+              border-radius: 6px;
+            "
+          >
+            <b>Positive signal (Example: fans re-watching):</b> You might
+            surface that "best of" clip as a highlight or use it as a preview.
+          </div>
+          <div
+            style="
+              background: #b71c1c;
+              border-left: 5px solid #e74c3c;
+              color: #fff;
+              padding: 0.9em 1.2em;
+              font-size: 1.08em;
+              font-weight: 600;
+              box-shadow: 2px 2px 8px #f5b2b2;
+              border-radius: 6px;
+            "
+          >
+            <b>Negative signal (Example: glitch):</b> You'd A/B test the fixes
+            to maybe adjust the edit point, swap in a clearer subtitle, or tweak
+            the skip-intro marker.
+          </div>
+        </div>
+        <span
+          style="
+            display: block;
+            margin-top: 1em;
+            font-size: 1.13em;
+            color: var(--primary-light);
+            font-weight: 600;
+          "
+        >
+          Fenwick Tree aids in this process by providing real-time updates, fast
+          range-queries and triggering A/B experiments.
+        </span>
+        <div style="background:#18191a;border-radius:14px;padding:1.2em 1.5em;margin-top:2.5em;box-shadow:0 2px 12px rgba(229,9,20,0.10);color:#e0e0e0;">
+          <b style="font-size:1.08em;">References:</b>
+          <ul style="font-size:1em;color:#aaa;margin-top:0.7em;list-style-type:disc;padding-left:1.5em;">
+            <li><a href="https://netflixtechblog.com/its-all-a-bout-testing-the-netflix-experimentation-platform-4e1ca458c15" target="_blank">Netflix Tech Blog: Experimentation Platform</a></li>
+            <li><a href="https://netflixtechblog.com/netflixs-viewing-data-how-we-know-where-you-are-in-house-of-cards-608dd61077da" target="_blank">Netflix Tech Blog: Viewing Data</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

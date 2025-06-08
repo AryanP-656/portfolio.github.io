@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic CDN Resource Management</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navigation">
+      <div class="nav-links">
+        <a href="../domain.html">Back to Domain</a>
+        <a href="personalized-recommendation.html"
+          >Next: Personalized Recommendation</a
+        >
+      </div>
+    </nav>
+    <main class="section-container" style="margin-top: 5.5rem">
+      <section
+        class="case-card"
+        style="
+          max-width: 1200px;
+          margin: 2.5em auto;
+          background: var(--card-background);
+          border-radius: 14px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.13);
+          padding: 2.2em 2em 2.5em 2em;
+        "
+      >
+        <h2>
+          <i class="fas fa-network-wired"></i> Dynamic CDN Resource Management
+        </h2>
+        <p style="font-size: 1.1em; font-style: italic; margin-bottom: 1.5rem">
+          Imagine it's the weekend, you're tired from a stressful week and ready
+          to relax with some entertainment. You open Netflix and begin your
+          journey….
+        </p>
+        <div
+          style="
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+          "
+        >
+          <div style="flex: 2; min-width: 220px">
+            <br /><br />
+            <strong>
+              Of course, you're not alone and there might be several others in
+              your region and the neighbouring regions who had the same idea.
+              Hence, Netflix must dynamically decide where (which CDNs and edge
+              servers) to allocate extra bandwidth just as peak demand builds
+              up.
+            </strong>
+          </div>
+          <img
+            src="../cdn.png"
+            alt="CDN Distribution Map"
+            style="
+              flex: 1;
+              min-width: 800px;
+              max-width: 850px;
+              width: 100%;
+              border-radius: 10px;
+              box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+              background: #e9e9e9;
+            "
+          />
+        </div>
+        <div
+          style="
+            font-size: 0.98em;
+            color: #aaa;
+            margin: 0.5em 0 1.5em 0;
+            text-align: right;
+          "
+        >
+          <b>Image Source:</b>
+          <a
+            href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn/"
+            target="_blank"
+            >cloudflare.com</a
+          >
+        </div>
+        <br /><br />
+        <strong style="color: var(--primary-color)"
+          >Kadane's Algorithm (2D):</strong
+        ><br />
+        <em>Application:</em> Efficiently finding segments of highest viewer
+        engagement within a geographic heatmap or user-activity timeline.<br />
+        <img
+          src="../Kadane_s_Algorithm.gif"
+          alt="Kadane's Algorithm GIF"
+          style="
+            width: 600px;
+            max-width: 100%;
+            display: block;
+            margin: 1rem auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+          "
+        />
+        <div
+          style="
+            font-size: 0.98em;
+            color: #aaa;
+            margin: 0.5em 0 1.5em 0;
+            text-align: right;
+          "
+        >
+          <b>GIF Source:</b>
+          <a
+            href="https://makeagif.com/gif/kadanes-algorithm-by-amkio-DM6qq2"
+            target="_blank"
+            >makeagif.com</a
+          >
+        </div>
+        <span
+          style="
+            display: block;
+            margin: 0.5rem 0 0.5rem 0;
+            font-size: 1.08em;
+            color: var(--text-color);
+          "
+        >
+          For example, if the y-axis represents hours (0–3) and the x-axis
+          represents regions (0–4), Kadane's Algorithm can efficiently find the
+          time-region block with the highest viewer activity. This helps Netflix
+          pinpoint exactly when and where resources need to be scaled up more
+          than usual.
+        </span>
+        <div
+          style="
+            background: var(--card-background);
+            border-left: 4px solid var(--primary-color);
+            padding: 0.7em 1em;
+            margin: 1em 0;
+            font-size: 1.05em;
+            box-shadow: 2px 2px 8px var(--neomorphic-dark);
+          "
+        >
+          <strong style="color: var(--primary-color)">Time Complexity:</strong>
+          O(R² × C), where R = number of rows, C = number of columns. Efficient
+          for moderate-sized grids (e.g., 100×100).
+        </div>
+        <span
+          style="
+            display: block;
+            margin-top: 0.5em;
+            font-size: 1.13em;
+            color: var(--primary-light);
+            font-weight: 600;
+          "
+        >
+          This case helps to identify when and where exactly resources should be
+          scaled in order to prevent buffering and optimise user experience.
+        </span>
+        <p style="margin-top: 2rem; font-weight: 600">
+          Python implementation of Kadane's 2D Algorithm:
+        </p>
+        <details
+          style="
+            background-color: #1e1e1e;
+            border-left: 4px solid #e50914;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #f1f1f1;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+          "
+        >
+          <summary
+            style="
+              font-weight: bold;
+              font-size: 1.1rem;
+              cursor: pointer;
+              color: #e50914;
+            "
+          >
+            Show Python Code
+          </summary>
+          <pre><code>
+def kadane_1d(arr):
+    max_sum = float('-inf')
+    current_sum = 0
+    start = 0
+    max_start = max_end = 0
+    for i, val in enumerate(arr):
+        if current_sum <= 0:
+            current_sum = val
+            start = i
+        else:
+            current_sum += val
+        if current_sum > max_sum:
+            max_sum = current_sum
+            max_start = start
+            max_end = i
+    return max_sum, max_start, max_end
+
+def kadane_2d(matrix):
+    rows, cols = len(matrix), len(matrix[0])
+    max_sum = float('-inf')
+    final_left = final_right = final_top = final_bottom = 0
+
+    for top in range(rows):
+        temp = [0] * cols
+        for bottom in range(top, rows):
+            for col in range(cols):
+                temp[col] += matrix[bottom][col]
+            curr_sum, left, right = kadane_1d(temp)
+            if curr_sum > max_sum:
+                max_sum = curr_sum
+                final_top, final_bottom = top, bottom
+                final_left, final_right = left, right
+    return max_sum, final_top, final_left, final_bottom, final_right
+            </code></pre>
+        </details>
+        <div
+          style="
+            background: #18191a;
+            border-radius: 14px;
+            padding: 1.2em 1.5em;
+            margin-top: 2.5em;
+            box-shadow: 0 2px 12px rgba(229, 9, 20, 0.1);
+            color: #e0e0e0;
+          "
+        >
+          <b style="font-size: 1.08em">References:</b>
+          <ul
+            style="
+              font-size: 1em;
+              color: #aaa;
+              margin-top: 0.7em;
+              list-style-type: disc;
+              padding-left: 1.5em;
+            "
+          >
+            <li>
+              <a
+                href="https://tutorialsdojo.com/netflix-streaming-explained-how-cdn-technology-ensures-lag-free-global-viewing-introduction-to-global-infrastructure-part-1/"
+                target="_blank"
+                >Netflix Streaming & CDN - Tutorials Dojo</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.geeksforgeeks.org/maximum-sum-rectangle-in-a-2d-matrix-dp-27/"
+                target="_blank"
+                >Maximum Sum Rectangle in a 2D Matrix - GeeksforGeeks</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

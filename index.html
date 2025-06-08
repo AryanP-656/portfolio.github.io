@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
     <nav class="navigation">
@@ -17,206 +18,388 @@
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#domain">Domain</a>
+        <a href="domain.html">Domain & Business Cases</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
     <header class="hero" id="hero">
-      <div class="hero-content">
-        <h1>Aryan Phadnis</h1>
-        <p class="subtitle">Computer Science Engineer</p>
+      <div class="hero-content modern-hero">
+        <h1>Hello there!</h1>
+        <h2>Welcome to my portfolio.</h2>
       </div>
     </header>
     <main>
       <div class="section-container">
-        <section id="about">
+        <section id="about" data-aos="fade-up">
           <h2>About</h2>
           <p>
-            Hi, I'm Aryan Phadnis, a 6th-semester Computer Science student at
-            KLE Technological University. I'm a passionate developer who enjoys
-            web development as well as tackling real-world problems through
-            innovative solutions. My interests include exploring new
-            technologies, collaborating on exciting projects, and continuously
-            learning to enhance my skills. I'm eager to contribute to projects
-            that are impactful and would make a difference in the tech world.
+            I'm Aryan Phadnis, a third-year Computer Science student at KLE
+            Technological University, passionate about creating impactful
+            solutions through technology. My interests span web development,
+            machine learning, and recently embedded systems. I enjoy tackling
+            real-world challenges and collaborating on projects that make a
+            difference.
           </p>
         </section>
-        <section id="education">
-          <h2>Education</h2>
-          <div class="education-card">
-            <h3>Bachelor of Engineering in Computer Science</h3>
-            <p class="university">KLE Technological University</p>
-            <p class="year">Expected Graduation: 2026</p>
-            <p class="grade">CGPA: 8.74</p>
+        <hr class="netflix-separator" />
+        <div class="timeline-columns">
+          <div class="timeline-left">
+            <section id="education" data-aos="fade-up">
+              <h2>Education</h2>
+              <div class="timeline">
+                <ul class="timeline-list">
+                  <li class="timeline-item">
+                    <div class="timeline-box">
+                      <div class="timeline-item-title">
+                        KLE Technological University - Hubballi, Karnataka
+                      </div>
+                      <div class="timeline-text">
+                        B.E. in Computer Science 2022–2026
+                      </div>
+                    </div>
+                  </li>
+                  <li class="timeline-item">
+                    <div class="timeline-box">
+                      <div class="timeline-item-title">
+                        GVM's Adarsh Higher Secondary School - Ponda, Goa
+                      </div>
+                      <div class="timeline-text">2020-2022</div>
+                    </div>
+                  </li>
+                  <li class="timeline-item">
+                    <div class="timeline-box">
+                      <div class="timeline-item-title">
+                        Vidhya Vruddhi School - Ponda Goa
+                      </div>
+                      <div class="timeline-text">2010-2020</div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </div>
+          <div class="timeline-right">
+            <section id="experience" data-aos="fade-up">
+              <br />
+              <h2>Experience</h2>
+              <div class="timeline">
+                <ul class="timeline-list">
+                  <li class="timeline-item">
+                    <div class="timeline-box logo-box">
+                      <img
+                        src="nvidia-logo.png"
+                        alt="NVIDIA Logo"
+                        class="exp-logo"
+                      />
+                      <div class="timeline-item-title">Project Intern</div>
+                      <div
+                        class="timeline-text"
+                        style="font-weight: 600; color: #e50914"
+                      >
+                        NVIDIA
+                      </div>
+                      <div class="timeline-text" style="margin-bottom: 0.5em">
+                        Feb 2025 – Present
+                      </div>
+                      <div class="timeline-text">
+                        <ul>
+                          <li>
+                            Developed a C++ memory tracking tool for autonomous
+                            vehicle software.
+                          </li>
+                          <li>
+                            Tracked 100% of modern C++ allocations on ARM-based
+                            SBCs.
+                          </li>
+                          <li>
+                            Integrated the tool with ROS-based autopilot stacks
+                            for runtime validation.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+        <hr class="netflix-separator" />
+        <section id="tech-stack" data-aos="fade-up">
+          <h2>Tech Stack</h2>
+          <div class="stack-groups">
+            <div class="stack-group">
+              <div class="stack-label">Programming Languages</div>
+              <div class="stack-pills">
+                <span class="stack-pill"
+                  ><i class="fab fa-cuttlefish stack-pill-icon"></i>C</span
+                >
+                <span class="stack-pill"
+                  ><i class="fab fa-cuttlefish stack-pill-icon"></i>C++</span
+                >
+                <span class="stack-pill"
+                  ><i class="fab fa-python stack-pill-icon"></i>Python</span
+                >
+                <span class="stack-pill"
+                  ><i class="fab fa-js-square stack-pill-icon"></i
+                  >JavaScript</span
+                >
+                <span class="stack-pill"
+                  ><i class="fas fa-database stack-pill-icon"></i
+                  >SQL/MySQL</span
+                >
+              </div>
+            </div>
+            <hr class="stack-separator-vertical" />
+            <div class="stack-group">
+              <div class="stack-label">Other Languages</div>
+              <div class="stack-pills">
+                <span class="stack-pill"
+                  ><i class="fab fa-html5 stack-pill-icon"></i>HTML</span
+                >
+                <span class="stack-pill"
+                  ><i class="fab fa-css3-alt stack-pill-icon"></i>CSS</span
+                >
+              </div>
+            </div>
+            <hr class="stack-separator-vertical" />
+            <div class="stack-group">
+              <div class="stack-label">Frameworks/Technologies</div>
+              <div class="stack-pills">
+                <span class="stack-pill"
+                  ><i class="fab fa-react stack-pill-icon"></i>React.js</span
+                >
+                <span class="stack-pill"
+                  ><i class="fab fa-node-js stack-pill-icon"></i>Node.js</span
+                >
+                <span class="stack-pill"
+                  ><i class="fas fa-flask stack-pill-icon"></i>Flask</span
+                >
+                <span class="stack-pill"
+                  ><i class="fas fa-database stack-pill-icon"></i>Supabase</span
+                >
+                <span class="stack-pill"
+                  ><i class="fas fa-cloud stack-pill-icon"></i>Vercel</span
+                >
+                <span class="stack-pill"
+                  ><i class="fab fa-git-alt stack-pill-icon"></i>Git</span
+                >
+                <span class="stack-pill"
+                  ><i class="fab fa-github stack-pill-icon"></i>GitHub</span
+                >
+              </div>
+            </div>
+            <hr class="stack-separator-vertical" />
+            <div class="stack-group">
+              <div class="stack-label">Currently Exploring</div>
+              <div class="stack-pills">
+                <span class="stack-pill"
+                  ><i class="fas fa-microchip stack-pill-icon"></i>QNX OS</span
+                >
+                <span class="stack-pill"
+                  ><i class="fas fa-database stack-pill-icon"></i>MongoDB</span
+                >
+                <span class="stack-pill"
+                  ><i class="fab fa-react stack-pill-icon"></i>Next.js</span
+                >
+                <span class="stack-pill"
+                  ><i class="fas fa-code stack-pill-icon"></i>Golang</span
+                >
+              </div>
+            </div>
           </div>
         </section>
-        <section id="skills">
-          <h2>Technical Skills</h2>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h3><i class="fas fa-code"></i> Languages</h3>
-              <ul>
-                <li>Python</li>
-                <li>C</li>
-                <li>C++</li>
-                <li>JavaScript</li>
-                <li>SQL/MySQL</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h3><i class="fas fa-laptop-code"></i> Web Technologies</h3>
-              <ul>
-                <li>HTML/CSS</li>
-                <li>React.js</li>
-                <li>Node.js</li>
-                <li>Flask</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
-              <ul>
-                <li>Supabase</li>
-                <li>Vercel</li>
-                <li>Git</li>
-                <li>GitHub</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h3><i class="fas fa-brain"></i> Additional Skills</h3>
-              <ul>
-                <li>Machine Learning</li>
-                <li>Data Analysis</li>
-              </ul>
-            </div>
-          </div>
-          <h2>Soft Skills</h2>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <ul>
-                <li>Teamwork</li>
-                <li>Communication</li>
-                <li>Problem Solving</li>
-                <li>Critical Thinking</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-        <section id="projects">
+        <hr class="netflix-separator" />
+        <section id="projects" data-aos="fade-up">
           <h2>Featured Projects</h2>
-          <div class="project-grid">
+          <div class="project-cards-grid">
+            <!-- VQA Project Card -->
             <div class="project-card">
+              <img
+                src="vqa.png"
+                alt="Visual Question Answering (VQA) Model"
+                class="project-image"
+              />
+              <div
+                style="
+                  font-size: 0.92em;
+                  color: #aaa;
+                  margin-bottom: 0.5em;
+                  margin-top: 0.2em;
+                "
+              >
+                Reference:
+                <a
+                  href="https://www.edenai.co/feature/visual-question-answering"
+                  target="_blank"
+                  style="color: #e50914; text-decoration: underline"
+                  >edenai.co</a
+                >
+              </div>
+              <div class="project-pill">ML + Computer Vision</div>
               <h3>Visual Question Answering (VQA) Model</h3>
               <p>
                 Developed a VQA model using BLIP and Transformers, fine-tuned on
                 a custom dataset for image-question pairs.
               </p>
-              <div class="tech-stack">
-                <span>PyTorch</span>
-                <span>Transformers</span>
-                <span>Google Colab</span>
+              <div class="project-tech-pills">
+                <span>PyTorch</span><span>Transformers</span
+                ><span>Google Colab</span>
+              </div>
+              <ul>
+                <li>Fine-tuned BLIP on 3,000 annotated images from IHDS</li>
+                <li>Achieved 86.42% accuracy and 0.89 F1 score on test set</li>
+                <li>
+                  Beam search used during inference for better answer generation
+                </li>
+              </ul>
+              <div class="project-links">
+                <a href="https://github.com/AryanP-656/IHDS_VQA" target="_blank"
+                  >GitHub</a
+                >
               </div>
             </div>
+            <!-- QueryGenie Project Card -->
             <div class="project-card">
-              <h3>SQL Query Generation from Natural Language</h3>
+              <img
+                src="query-genie.png"
+                alt="QueryGenie: SQL via RAG"
+                class="project-image"
+              />
+              <div class="project-pill">NLP + Database</div>
+              <h3>QueryGenie: SQL via RAG</h3>
               <p>
-                Created QueryGenie, an AI tool that converts natural language
-                into SQL queries using RAG and Pinecone.
+                A dynamic SQL query generator that uses RAG and LLMs to
+                interpret user prompts and produce schema-aware SQL queries for
+                any connected database.
               </p>
-              <div class="tech-stack">
-                <span>Python</span>
-                <span>NLP</span>
-                <span>Flask</span>
-                <span>React.js</span>
+              <div class="project-tech-pills">
+                <span>LangChain</span><span>Pinecone</span><span>Node.js</span
+                ><span>SQL</span>
+              </div>
+              <ul>
+                <li>
+                  Adapts to custom schemas using a vectorized knowledge base.
+                </li>
+                <li>
+                  Delivers accurate production-grade SQL with fallback prompts.
+                </li>
+              </ul>
+              <div class="project-links">
+                <a
+                  href="https://github.com/AradhyaSpace11/QueryGenie"
+                  target="_blank"
+                  >GitHub</a
+                >
               </div>
             </div>
+            <!-- Video Game Database Project Card -->
             <div class="project-card">
-              <h3>Runtime Memory Allocation Detection Tool</h3>
-              <p>
-                Designed a tool to monitor memory allocation as an NVIDIA
-                project intern and detect inefficiencies, enhancing code
-                reliability and performance.
-              </p>
-            </div>
-            <div class="project-card">
+              <img
+                src="video-game.png"
+                alt="Video Game Database"
+                class="project-image"
+              />
+              <div class="project-pill">Web App</div>
               <h3>Video Game Database</h3>
               <p>
                 Developed a video game search platform with a Flask-based REST
                 API for retrieving game data. Implemented a search functionality
                 to fetch and display game details dynamically.
               </p>
-              <div class="tech-stack">
-                <span>Python</span>
-                <span>Flask</span>
-                <span>REST API</span>
-                <span>SQL</span>
-                <span>JavaScript</span>
+              <div class="project-tech-pills">
+                <span>Python</span><span>Flask</span><span>REST API</span
+                ><span>SQL</span><span>JavaScript</span>
+              </div>
+              <ul>
+                <li>
+                  Search for any game by name and view details, cover art, and
+                  more.
+                </li>
+                <li>
+                  Top and trending games, responsive UI, and error handling.
+                </li>
+              </ul>
+              <div class="project-links">
+                <a href="https://github.com/AryanP-656/CS50x" target="_blank"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+            <!-- Runtime Memory Allocation Project Card -->
+            <div class="project-card">
+              <img
+                src="runtime.png"
+                alt="Runtime Memory Allocation Detection Tool"
+                class="project-image"
+              />
+              <div
+                style="
+                  font-size: 0.92em;
+                  color: #aaa;
+                  margin-bottom: 0.5em;
+                  margin-top: 0.2em;
+                "
+              >
+                Reference:
+                <a
+                  href="https://www.trytoprogram.com/c-programming/dynamic-memory-allocation-in-c/"
+                  target="_blank"
+                  style="color: #e50914; text-decoration: underline"
+                  >trytoprogram.com</a
+                >
+              </div>
+              <div class="project-pill">Systems</div>
+              <h3>Runtime Memory Allocation Detection Tool</h3>
+              <p>
+                Designed a tool to monitor memory allocation as an NVIDIA
+                project intern and detect inefficiencies, enhancing code
+                reliability and performance.
+              </p>
+              <div class="project-tech-pills">
+                <span>C++</span><span>Linux</span><span>ROS</span>
+              </div>
+              <ul>
+                <li>
+                  Tracked 100% of modern C++ allocations on ARM-based SBCs.
+                </li>
+                <li>
+                  Integrated with ROS-based autopilot stacks for runtime
+                  validation.
+                </li>
+              </ul>
+              <div class="project-links">
+                <a href="https://github.com/AradhyaSpace11/mtrk" target="_blank"
+                  >GitHub</a
+                >
               </div>
             </div>
           </div>
         </section>
-        <section id="domain">
-          <h2>Chosen Domain</h2>
-          <h3><i class="fab fa-microsoft"></i> Microsoft</h3>
-          <div class="case-studies">
-            <div class="case-card">
-              <h3>
-                <i class="fas fa-robot"></i> AI-Driven Windows Troubleshooter
-              </h3>
-              <p>
-                An AI tool in Windows that automatically fixes software issues
-                by analyzing data from users, reducing support tickets by 40%
-                and boosting reliability.
-              </p>
-            </div>
-            <div class="case-card">
-              <h3>
-                <i class="fas fa-vr-cardboard"></i> HoloLens + AI for Field
-                Service
-              </h3>
-              <p>
-                Combines HoloLens and AI to assist technicians with real-time
-                data and repair guidance, reducing equipment downtime by 35%.
-              </p>
-            </div>
-            <div class="case-card">
-              <h3><i class="fas fa-shield-alt"></i> Azure SecureEdge</h3>
-              <p>
-                A security framework for Azure that uses encryption and
-                segmentation to protect hybrid cloud environments, appealing to
-                regulated industries.
-              </p>
-            </div>
-            <div class="case-card">
-              <h3><i class="fas fa-leaf"></i> Microsoft Sustainability Hub</h3>
-              <p>
-                A platform in Microsoft 365 and Azure for tracking and reducing
-                carbon footprints, promoting sustainability and encouraging
-                Azure adoption.
-              </p>
-            </div>
-          </div>
-        </section>
-        <section id="contact">
+        <hr class="netflix-separator" />
+        <section id="contact" data-aos="fade-up">
           <h2>Contact Me</h2>
-          <form class="contact-form">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your Name" />
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Your Email" />
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Your Message"></textarea>
-            <button type="submit">Send Message</button>
-          </form>
+          <div class="contact-inner-box">
+            <form class="contact-form">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your Name" />
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Your Email" />
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Your Message"></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
           <div class="social-links">
             <a
-              href="https://github.com/"
+              href="https://github.com/AryanP-656"
               target="_blank"
               rel="noopener noreferrer"
             >
               <i class="fab fa-github"></i>
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/in/aryan-phadnis-a6284026a/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -224,27 +407,31 @@
             </a>
           </div>
         </section>
-        <section id="portfolio-details">
+        <section id="portfolio-details" data-aos="fade-up">
           <h2>Portfolio Details</h2>
-          <dl>
-            <dt>Course Name</dt>
-            <dd>Algorithmic Problem Solving</dd>
-            <dt>Course Code</dt>
-            <dd></dd>
-            <dt>Name</dt>
-            <dd>Aryan Phadnis</dd>
-            <dt>SRN</dt>
-            <dd>01FE22BCS126</dd>
-            <dt>Course Instructor</dt>
-            <dd>Prakash Hegade</dd>
-            <dt>University</dt>
-            <dd>KLE Technological University</dd>
-            <dt>Portfolio Topic</dt>
-            <dd>Microsoft</dd>
-          </dl>
+          <div class="portfolio-inner-box">
+            <dl>
+              <dt>Course Name</dt>
+              <dd>Algorithmic Problem Solving</dd>
+              <dt>Name</dt>
+              <dd>Aryan Phadnis</dd>
+              <dt>SRN</dt>
+              <dd>01FE22BCS126</dd>
+              <dt>Course Instructor</dt>
+              <dd>Prakash Hegade</dd>
+              <dt>University</dt>
+              <dd>KLE Technological University</dd>
+              <dt>Portfolio Topic</dt>
+              <dd>Netflix</dd>
+            </dl>
+          </div>
         </section>
       </div>
     </main>
     <script src="main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

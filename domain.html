@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domain & Business Cases</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Netflix Animation Overlay -->
+    <div id="netflix-intro-overlay">
+      <img src="intro.gif" alt="Netflix Animation" id="netflix-intro-gif" />
+    </div>
+    <nav class="navigation">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="domain.html">Domain & Business Cases</a>
+      </div>
+    </nav>
+    <main class="section-container" style="margin-top: 5.5rem">
+      <section id="chosen-domain">
+        <h2 style="text-align: center">Chosen Domain: Netflix</h2>
+        <div style="text-align: center; margin: 2rem 0 1.5rem 0">
+          <img
+            src="logo.png"
+            alt="Netflix Logo"
+            class="rounded-logo"
+            style="width: 550px; max-width: 100%; display: inline-block"
+          />
+        </div>
+        <h3 style="text-align: center">
+          <i class="fab fa-netflix"></i> In the world of streaming services,
+          Netflix stands as a monopoly, captivating millions of viewers
+          worldwide with its vast library of content delivered seamlessly to
+          screens of all sizes. Netflix is a subscription-based streaming
+          platform offering movies, TV shows, and original content to users
+          worldwide. Its user-friendly interface and personalized
+          recommendations make it easy for anyone to discover and enjoy
+          entertainment on any device.
+        </h3>
+        <div
+          style="
+            text-align: center;
+            margin-top: 1em;
+            font-size: 0.97em;
+            color: #aaa;
+          "
+        >
+          Reference:
+          <a
+            href="https://www.geeksforgeeks.org/system-design-netflix-a-complete-architecture/"
+            target="_blank"
+            style="color: #e50914; text-decoration: underline"
+            >geeksforgeeks.org</a
+          >
+        </div>
+      </section>
+      <hr class="netflix-separator" />
+
+      <section
+        id="system-design"
+        style="
+          background: none !important;
+          box-shadow: none !important;
+          border: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        "
+      >
+        <h2 style="text-align: center">System Design of Netflix</h2>
+        <div
+          class="timeline-columns"
+          style="
+            margin-top: 2.5em;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          <div class="timeline-left">
+            <div class="timeline-box">
+              <h3
+                style="
+                  color: #e50914;
+                  text-align: left;
+                  margin-bottom: 1.2em;
+                  margin-top: 0;
+                "
+              >
+                Functional Requirements
+              </h3>
+              <ul style="font-size: 1.08em; color: #e0e0e0; line-height: 1.7">
+                <li>
+                  User accounts, login/logout, and subscription management
+                </li>
+                <li>
+                  Video playback: play, pause, rewind, fast-forward, download
+                </li>
+                <li>Personalized recommendations</li>
+                <li>Efficient search and autocomplete</li>
+                <li>Seamless streaming with CDN and buffer optimization</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-box">
+              <h3
+                style="
+                  color: #e50914;
+                  text-align: left;
+                  margin-bottom: 1.2em;
+                  margin-top: 0;
+                "
+              >
+                Non-Functional Requirements
+              </h3>
+              <ul style="font-size: 1.08em; color: #e0e0e0; line-height: 1.7">
+                <li>Low latency and high responsiveness</li>
+                <li>Scalability for millions of users</li>
+                <li>High availability and minimal downtime</li>
+                <li>Secure authentication and data privacy</li>
+                <li>Intuitive, easy-to-use interface</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin: 2.5em 0 2em 0">
+          <img
+            src="System_design.png"
+            alt="Netflix System Design Diagram"
+            style="
+              width: 90%;
+              max-width: 900px;
+              border-radius: 18px;
+              box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+            "
+          />
+          <div style="font-size: 0.97em; color: #aaa; margin-top: 0.5em">
+            System Design of Netflix (Source: geeksforgeeks.org)
+          </div>
+        </div>
+        <div
+          style="
+            max-width: 1100px;
+            margin: 0 auto 2.5em auto;
+            font-size: 1.35em;
+            font-weight: 700;
+            color: #e0e0e0;
+            line-height: 1.5;
+            font-family: inherit;
+          "
+        >
+          <b>Summary:</b> <br />Netflix's system design leverages a
+          microservices architecture deployed on AWS and its custom Open Connect
+          CDN to deliver seamless, high-quality video streaming to millions of
+          users worldwide. The client devices interact with backend
+          microservices for user management, recommendations, and content
+          discovery, while video streaming is handled by geographically
+          distributed CDN servers for low latency and high availability. Content
+          is transcoded into multiple formats and resolutions for device
+          compatibility and network adaptability. Data storage uses a
+          combination of MySQL for transactional data and Cassandra for scalable
+          viewing history. The architecture emphasizes stateless services,
+          redundancy, and real-time analytics using tools like Kafka and Spark,
+          ensuring scalability, reliability, and a personalized user
+          experience.<br /><br />
+          <div
+            style="
+              background: #18191a;
+              border-radius: 14px;
+              padding: 1.2em 1.5em;
+              margin-top: 1.2em;
+              box-shadow: 0 2px 12px rgba(229, 9, 20, 0.1);
+            "
+          >
+            <b style="font-size: 1.08em">References:</b>
+            <ul
+              style="
+                font-size: 1em;
+                color: #aaa;
+                margin-top: 0.7em;
+                list-style-type: disc;
+                padding-left: 1.5em;
+              "
+            >
+              <li>
+                <a
+                  href="https://www.geeksforgeeks.org/system-design-netflix-a-complete-architecture/"
+                  target="_blank"
+                  >System Design Netflix | A Complete Architecture -
+                  GeeksforGeeks</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://saxenasanket.medium.com/system-design-of-netflix-part-1-4d65642ed738"
+                  target="_blank"
+                  >System Design of Netflix (Part 1) - Medium</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://systemdesignschool.io/problems/netflix/solution"
+                  target="_blank"
+                  >System Design School: Netflix Solution</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://medium.com/@lazygeek78/system-design-of-netflix-8a31bf9ca53f"
+                  target="_blank"
+                  >System Design of Netflix - Medium (lazygeek78)</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <hr class="netflix-separator" />
+      <section
+        id="business-cases"
+        style="
+          background: none !important;
+          box-shadow: none !important;
+          border: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        "
+      >
+        <h2 style="text-align: center">Business Cases</h2>
+        <div class="business-cases-inner" style="text-align: center">
+          <p
+            style="
+              margin-bottom: 2em;
+              font-size: 1.35em;
+              font-weight: 700;
+              color: #e0e0e0;
+              max-width: 700px;
+              margin-left: auto;
+              margin-right: auto;
+              line-height: 1.5;
+              font-family: inherit;
+            "
+          >
+            Explore how data structures and algorithsm can be utilized for
+            Netflix to deliver a seamless streaming experience.<br />
+            Click below to start your journey through the business cases!
+          </p>
+          <a
+            href="business_cases/cdn-resource-management.html"
+            class="netflix-play-btn"
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 0.7em;
+              background: #18191a;
+              color: #fff;
+              border: none;
+              padding: 0.95em 2.5em 0.95em 1.7em;
+              border-radius: 2em;
+              font-size: 1.18em;
+              font-weight: 600;
+              box-shadow: 0 2px 12px rgba(229, 9, 20, 0.12);
+              transition: background 0.2s;
+              cursor: pointer;
+              outline: none;
+              text-decoration: none;
+            "
+          >
+            <span
+              style="
+                display: inline-block;
+                width: 1.25em;
+                height: 1.25em;
+                background: #e50914;
+                clip-path: polygon(20% 10%, 80% 50%, 20% 90%);
+              "
+            ></span>
+            <span style="font-size: 1.08em">Business Cases</span>
+          </a>
+        </div>
+      </section>
+    </main>
+    <script src="main.js"></script>
+    <script>
+      // Hide the intro after 4 seconds (adjust as needed)
+      window.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          document.getElementById("netflix-intro-overlay").style.display =
+            "none";
+        }, 4000);
+      });
+    </script>
+  </body>
+</html>

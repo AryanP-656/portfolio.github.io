@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playback Buffer Optimization</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navigation">
+      <div class="nav-links">
+        <a href="../domain.html">Back to Domain</a>
+        <a href="search-query-completion.html"
+          >Previous: Search Query Completion</a
+        >
+        <a href="real-time-viewer-analytics.html"
+          >Next: Real-Time Viewer Analytics</a
+        >
+      </div>
+    </nav>
+    <main class="section-container" style="margin-top: 5.5rem">
+      <section
+        class="case-card"
+        style="
+          max-width: 1200px;
+          margin: 2.5em auto;
+          background: var(--card-background);
+          border-radius: 14px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.13);
+          padding: 2.2em 2em 2.5em 2em;
+        "
+      >
+        <h2><i class="fas fa-play-circle"></i> Playback Buffer Optimization</h2>
+        <p
+          style="
+            font-size: 1.08em;
+            color: var(--text-color);
+            font-style: italic;
+          "
+        >
+          Once you have finally found a title you seem interested in, you can
+          click play to start watching it. Netflix must now decide which video
+          chunks (at varying quality levels) to download first so you avoid
+          buffering issues.
+        </p>
+        <div
+          style="
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+          "
+        >
+          <div style="flex: 2; min-width: 220px">
+            <strong>
+              Dynamic programming can be applied here using a Knapsack-like
+              model to optimize which video segments to buffer at which quality,
+              given bandwidth constraints.
+            </strong>
+            <ul style="margin-top: 1em">
+              <li>
+                <b>Chunks:</b> next N video segments (e.g. 3 segments in the
+                example)
+              </li>
+              <li>
+                <b>Options per chunk:</b> each segment has multiple quality
+                levels
+              </li>
+              <li><b>Value:</b> perceived quality score (higher = better)</li>
+              <li><b>Weight:</b> bandwidth cost (bytes)</li>
+              <li>
+                <b>Budget:</b> your estimated bandwidth × buffer window (e.g. 7
+                units)
+              </li>
+              <li>
+                <b>Goal:</b> pick exactly one quality option per chunk to
+                maximize total quality under the bandwidth limit.
+              </li>
+            </ul>
+            <div
+              style="
+                background: var(--card-background);
+                border-left: 4px solid var(--primary-color);
+                padding: 0.7em 1em;
+                margin: 1em 0;
+                font-size: 1.05em;
+                box-shadow: 2px 2px 8px var(--neomorphic-dark);
+              "
+            >
+              <b>Goal:</b> Maximize total quality of buffered chunks under the
+              bandwidth "budget."
+            </div>
+          </div>
+          <img
+            src="../Knapsack.gif"
+            alt="Knapsack DP Animation"
+            style="
+              flex: 1;
+              min-width: 400px;
+              max-width: 500px;
+              width: 100%;
+              border-radius: 10px;
+              box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+              background: #e9e9e9;
+            "
+          />
+        </div>
+        <div
+          style="
+            font-size: 0.98em;
+            color: #aaa;
+            margin: 0.5em 0 1.5em 0;
+            text-align: right;
+          "
+        >
+          <b>GIF Source:</b>
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Knapsack_problem_dynamic_programming.gif"
+            target="_blank"
+            >Wikimedia Commons</a
+          >
+        </div>
+        <br />
+        <h3>Scenario Example</h3>
+        <div
+          style="
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+          "
+        >
+          <img
+            src="../dp_example.png"
+            alt="DP Table Example"
+            style="
+              flex: 1;
+              min-width: 220px;
+              max-width: 340px;
+              width: 100%;
+              border-radius: 10px;
+              box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+              background: #e9e9e9;
+            "
+          />
+          <div style="flex: 2; min-width: 220px">
+            <ul>
+              <li>
+                <b>Bandwidth budget:</b> Netflix estimates your current
+                connection can sustain 10 "units" worth of downloads over the
+                next buffer window.
+              </li>
+              <li>
+                <b>Video chunks:</b> We look ahead at the next 5 segments of the
+                video, each available in different quality levels.
+              </li>
+            </ul>
+            <div
+              style="
+                background: var(--card-background);
+                border-left: 4px solid var(--primary-color);
+                padding: 0.7em 1em;
+                margin: 1em 0;
+                font-size: 1.05em;
+                box-shadow: 2px 2px 8px var(--neomorphic-dark);
+              "
+            >
+              Budget = 7
+            </div>
+            <ul>
+              <li>
+                You must choose one option for each chunk (you can't skip a
+                segment).
+              </li>
+              <li>
+                The DP will find the combination (e.g. Chunk 1→High, Chunk
+                2→Med, Chunk 3→Med) that fits under 7 and yields the highest sum
+                of values.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          style="
+            font-size: 0.98em;
+            color: #aaa;
+            margin: 0.5em 0 1.5em 0;
+            text-align: right;
+          "
+        >
+          <b>Image Source:</b> <span>Your own work</span>
+        </div>
+        <p style="margin-top: 2rem; font-weight: 600">
+          Python implementation of the DP approach:
+        </p>
+        <details
+          style="
+            background-color: #1e1e1e;
+            border-left: 4px solid #e50914;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #f1f1f1;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+          "
+        >
+          <summary
+            style="
+              font-weight: bold;
+              font-size: 1.1rem;
+              cursor: pointer;
+              color: #e50914;
+            "
+          >
+            Show Python Code
+          </summary>
+          <pre><code># chunk_options[i] = list of (value, weight) for chunk i (1-indexed)
+chunk_options = {
+    1: [(1,1), (3,2), (5,4)],
+    2: [(2,1), (4,3), (6,5)],
+    3: [(1,1), (5,3), (8,6)],
+}
+budget = 7
+num_chunks = 3
+
+# dp[i][b] = max quality using chunks 1..i with budget b
+dp = [[0]*(budget+1) for _ in range(num_chunks+1)]
+
+for i in range(1, num_chunks+1):
+    for b in range(budget+1):
+        best = 0
+        for value, weight in chunk_options[i]:
+            if weight <= b:
+                best = max(best, dp[i-1][b-weight] + value)
+        dp[i][b] = best
+
+print("Max total quality:", dp[num_chunks][budget])
+        </code></pre>
+        </details>
+        <div
+          style="
+            background: var(--card-background);
+            border-left: 4px solid var(--primary-color);
+            padding: 0.7em 1em;
+            margin: 2em 0 1em 0;
+            font-size: 1.05em;
+            box-shadow: 2px 2px 8px var(--neomorphic-dark);
+          "
+        >
+          <strong style="color: var(--primary-color)"
+            >Efficiency Analysis:</strong
+          >
+          <br />
+          <b>Time:</b> O(N × B × M)
+          <span style="color: var(--text-secondary); font-size: 0.98em"
+            >N = number of chunks, B = budget (discrete units), M = number of
+            quality options per chunk</span
+          ><br />
+          <b>Space:</b> O(N × B)
+        </div>
+        <span
+          style="
+            display: block;
+            margin-top: 1em;
+            font-size: 1.13em;
+            color: var(--primary-light);
+            font-weight: 600;
+          "
+        >
+          By modeling your buffer as a multiple-choice knapsack, Netflix ensures
+          every segment is fetched at the best possible quality given your
+          connection. This dynamic selection maximizes viewing experience while
+          avoiding rebuffering.
+        </span>
+        <div
+          style="
+            background: #18191a;
+            border-radius: 14px;
+            padding: 1.2em 1.5em;
+            margin-top: 2.5em;
+            box-shadow: 0 2px 12px rgba(229, 9, 20, 0.1);
+            color: #e0e0e0;
+          "
+        >
+          <b style="font-size: 1.08em">References:</b>
+          <ul
+            style="
+              font-size: 1em;
+              color: #aaa;
+              margin-top: 0.7em;
+              list-style-type: disc;
+              padding-left: 1.5em;
+            "
+          >
+            <li>
+              <a
+                href="https://netflixtechblog.com/dynamic-optimizer-for-video-streaming-2b1b3e5c0b3a"
+                target="_blank"
+                >Netflix Tech Blog: Dynamic Optimizer for Video Streaming</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/"
+                target="_blank"
+                >GeeksforGeeks: 0-1 Knapsack Problem</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
